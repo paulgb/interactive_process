@@ -1,4 +1,4 @@
-use std::io::{BufRead, BufReader, Write, Result};
+use std::io::{BufRead, BufReader, Result, Write};
 use std::process::{Child, ChildStdin, Command, ExitStatus, Stdio};
 use std::thread;
 

@@ -2,5 +2,9 @@
 name = "interactive_process"
 version = "0.1.0"
 edition = "2018"
+authors = ["Paul Butler <paulgb@gmail.com>"]
+repository = "https://github.com/paulgb/interactive_process"
+license = "MIT OR Apache-2.0"
+description = "A tiny Rust library for interacting with a running process over `stdio`."
 
 [dependencies]

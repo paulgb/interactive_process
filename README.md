@@ -58,7 +58,7 @@ fn main() {
     /// We're done with the process, but it is not self-terminating,
     /// so we can't use `proc.wait()`. Instead, we'll take the `Child` from
     /// the `InteractiveProcess` and kill it ourselves.
-    proc.take().kill().unwrap();
+    proc.close().kill().unwrap();
 }
 ```
 

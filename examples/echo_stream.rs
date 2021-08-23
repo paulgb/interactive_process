@@ -18,5 +18,5 @@ fn main() {
     // before we kill it.
     sleep(Duration::from_millis(1));
 
-    proc.take().kill().unwrap();
+    proc.close().kill().unwrap();
 }

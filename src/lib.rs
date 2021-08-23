@@ -1,3 +1,14 @@
+//! `interactive_process` is a lightweight wrapper on [std::process] that provides
+//! an interface for running a process and relaying messages to/from it as
+//! newline-delimited strings over `stdin`/`stdout`.
+//!
+//! This behavior is provided through the [InteractiveProcess] struct, which
+//! is constructed with a [std::process::Command] and a callback which is called
+//! with a [std::io::Result]-wrapped [String] for each string received from the
+//! child process. Upon construction, [InteractiveProcess] begins executing the
+//! passed command and starts the event loop. Whilst the process is running, you
+//! can send 
+
 use std::io::{BufRead, BufReader, Result, Write};
 use std::process::{Child, ChildStdin, Command, ExitStatus, Stdio};
 use std::thread;
@@ -84,12 +95,13 @@ impl InteractiveProcess {
         self.stdin.write_all(data.as_bytes())
     }
 
-    /// Consume this `InteractiveProcess` and return its child. This is useful if you
-    /// want to take over control of the child, for example, to kill it:
+    /// Consume this `InteractiveProcess` and return its child. This closes the
+    /// process's stdin stream, which usually kills the process. If it doesn't,
+    /// you can use the returned `Child` object to kill it:
     ///
     ///     proc = InteractiveProces::new(...);
     ///     proc.take().kill().unwrap();
-    pub fn take(self) -> Child {
+    pub fn close(self) -> Child {
         self.child
     }
 

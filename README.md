@@ -1,5 +1,8 @@
 # `interactive_process`
 
+[![crates.io](https://img.shields.io/crates/v/interactive_process.svg)](https://crates.io/crates/interactive_process)
+[![docs.rs](https://img.shields.io/badge/docs-release-brightgreen)](https://docs.rs/interactive_process/)
+
 A tiny Rust library for interacting with a running process over `stdio`.
 
 A common pattern in Unix is to have programs that either produce or consume

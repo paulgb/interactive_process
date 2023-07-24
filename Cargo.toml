@@ -1,7 +1,7 @@
 [package]
 name = "interactive_process"
 version = "0.1.2"
-edition = "2018"
+edition = "2021"
 authors = ["Paul Butler <paulgb@gmail.com>"]
 repository = "https://github.com/paulgb/interactive_process"
 license = "MIT OR Apache-2.0"

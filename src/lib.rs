@@ -7,7 +7,7 @@
 //! with a [std::io::Result]-wrapped [String] for each string received from the
 //! child process. Upon construction, [InteractiveProcess] begins executing the
 //! passed command and starts the event loop. Whilst the process is running, you
-//! can send 
+//! can send
 
 use std::io::{BufRead, BufReader, Result, Write};
 use std::process::{Child, ChildStdin, Command, ExitStatus, Stdio};

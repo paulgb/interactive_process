@@ -7,7 +7,7 @@
 //! with a [std::io::Result]-wrapped [String] for each string received from the
 //! child process. Upon construction, [InteractiveProcess] begins executing the
 //! passed command and starts the event loop. Whilst the process is running, you
-//! can send 
+//! can send
 
 use std::io::{BufRead, BufReader, Result, Write};
 use std::process::{Child, ChildStdin, Command, ExitStatus, Stdio};
@@ -39,7 +39,7 @@ impl InteractiveProcess {
     /// standard in and out streams for later use. The provided callback is
     /// called for every newline-terminated string written to `stdout` by the
     /// process.
-    pub fn new<T>(command: Command, line_callback: T) -> Result<Self>
+    pub fn new<T>(command: &mut Command, line_callback: T) -> Result<Self>
     where
         T: Fn(Result<String>) + Send + 'static,
     {
@@ -49,7 +49,7 @@ impl InteractiveProcess {
     /// Constructor with the same semantics as `new`, except that an additional
     /// no-argument closure is provided which is called when the client exits.
     pub fn new_with_exit_callback<T, S>(
-        mut command: Command,
+        command: &mut Command,
         line_callback: T,
         exit_callback: S,
     ) -> std::io::Result<Self>

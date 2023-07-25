@@ -2,8 +2,8 @@ use interactive_process::InteractiveProcess;
 use std::{process::Command, thread::sleep, time::Duration};
 
 fn main() {
-    let cmd = Command::new("examples/echo_stream.py");
-    let mut proc = InteractiveProcess::new(cmd, |line| {
+    let mut cmd = Command::new("examples/echo_stream.py");
+    let mut proc = InteractiveProcess::new(&mut cmd, |line| {
         println!("Got: {}", line.unwrap());
     })
     .unwrap();
